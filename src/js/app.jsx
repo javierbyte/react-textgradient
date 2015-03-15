@@ -4,38 +4,40 @@ var TextGradient = React.createClass({
 
     propTypes: {
         text: React.PropTypes.string,
-        component: React.PropTypes.string
+        fromColor: React.PropTypes.string,
+        toColor: React.PropTypes.string,
+        fallbackColor: React.PropTypes.string
     },
 
     getDefaultProps() {
         return {
             text: '',
-            component: 'span'
+            fromColor: 'transparent',
+            toColor: 'transparent'
         }
     },
 
     render() {
-        var {text, component, gradient, direction, ...other} = this.props;
+        var {text, component, fromColor, toColor, fallbackColor, direction, ...other} = this.props;
 
         var style;
-        var isWebkit = 'WebkitTextFillColor' in document.body.style;
+        var isWebkit = 'WebkitTextFillColor' in document.documentElement.style;
 
         if(isWebkit) {
-            console.log('webkit!');
             style = {
-                color: gradient[0],
-                background: '-webkit-linear-gradient(right, ' + gradient.join(',') + ')',
+                display: 'block',
+                color: fallbackColor || fromColor,
+                background: '-webkit-linear-gradient(right, ' + fromColor + ',' + toColor + ')',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
             }
         } else {
             style  = {
-                color: gradient[0],
+                display: 'block',
+                color: fallbackColor || fromColor,
                 mask: 'url(#svgGrad)'
             }
         }
-
-        console.log(style);
 
         if(!isWebkit) var SvgGrad = "" +
             "<svg height='0' width='0' style='position:absolute'>" +
@@ -69,13 +71,25 @@ var App = React.createClass({
 
     render() {
         return (
-            <h1>
-                <TextGradient
-                    text='I will be textgradient'
-                    gradient={['#FF8008', 'transparent']}
-                    direction='right'
-                    />
-            </h1>
+            <div>
+                <h1>
+                    <TextGradient
+                        text='react-textgradient'
+                        fromColor='#FF8008'
+                        toColor='#FFFF00'
+                        direction='right'
+                        />
+                </h1>
+
+                <div className='big'>
+                    <TextGradient
+                        text='Text gradient react component. CSS with SVG fallback.'
+                        fromColor='#eef2f3'
+                        toColor='#8e9eab'
+                        direction='right'
+                        />
+                </div>
+            </div>
         );
     }
 

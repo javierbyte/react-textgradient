@@ -19656,38 +19656,40 @@ var TextGradient = React.createClass({displayName: "TextGradient",
 
     propTypes: {
         text: React.PropTypes.string,
-        component: React.PropTypes.string
+        fromColor: React.PropTypes.string,
+        toColor: React.PropTypes.string,
+        fallbackColor: React.PropTypes.string
     },
 
     getDefaultProps:function() {
         return {
             text: '',
-            component: 'span'
+            fromColor: 'transparent',
+            toColor: 'transparent'
         }
     },
 
     render:function() {
-        var $__0=      this.props,text=$__0.text,component=$__0.component,gradient=$__0.gradient,direction=$__0.direction,other=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{text:1,component:1,gradient:1,direction:1});
+        var $__0=        this.props,text=$__0.text,component=$__0.component,fromColor=$__0.fromColor,toColor=$__0.toColor,fallbackColor=$__0.fallbackColor,direction=$__0.direction,other=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{text:1,component:1,fromColor:1,toColor:1,fallbackColor:1,direction:1});
 
         var style;
-        var isWebkit = 'WebkitTextFillColor' in document.body.style;
+        var isWebkit = 'WebkitTextFillColor' in document.documentElement.style;
 
         if(isWebkit) {
-            console.log('webkit!');
             style = {
-                color: gradient[0],
-                background: '-webkit-linear-gradient(right, ' + gradient.join(',') + ')',
+                display: 'block',
+                color: fallbackColor || fromColor,
+                background: '-webkit-linear-gradient(right, ' + fromColor + ',' + toColor + ')',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
             }
         } else {
             style  = {
-                color: gradient[0],
+                display: 'block',
+                color: fallbackColor || fromColor,
                 mask: 'url(#svgGrad)'
             }
         }
-
-        console.log(style);
 
         if(!isWebkit) var SvgGrad = "" +
             "<svg height='0' width='0' style='position:absolute'>" +
@@ -19721,12 +19723,24 @@ var App = React.createClass({displayName: "App",
 
     render:function() {
         return (
-            React.createElement("h1", null, 
-                React.createElement(TextGradient, {
-                    text: "I will be textgradient", 
-                    gradient: ['#FF8008', 'transparent'], 
-                    direction: "right"}
-                    )
+            React.createElement("div", null, 
+                React.createElement("h1", null, 
+                    React.createElement(TextGradient, {
+                        text: "react-textgradient", 
+                        fromColor: "#FF8008", 
+                        toColor: "#FFFF00", 
+                        direction: "right"}
+                        )
+                ), 
+
+                React.createElement("div", {className: "big"}, 
+                    React.createElement(TextGradient, {
+                        text: "Text gradient react component. CSS with SVG fallback.", 
+                        fromColor: "#eef2f3", 
+                        toColor: "#8e9eab", 
+                        direction: "right"}
+                        )
+                )
             )
         );
     }
