@@ -1,0 +1,50 @@
+<!--
+     Any copyright is dedicated to the Public Domain.
+     http://creativecommons.org/licenses/publicdomain/
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+
+<body style="background:#ccc; font-size:30px;">
+    <style>
+    p {
+      width: 100%;
+        text-align: center;
+        font-size: 3em;
+        display: inline-block;
+        margin: 1em;
+        position: relative;
+        color: #ff0;
+    }
+
+    p::after {
+      color: #000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      content: 'Im a gradient.';
+        mask: url(#svgGrad);
+        -webkit-mask: url(#svgGrad);
+    }
+
+    </style>
+    <p class="target">
+      Im a gradient.
+
+    <svg height="0" width="0" style="position:absolute">
+        <mask id="svgGrad" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+            <linearGradient id="g" gradientUnits="objectBoundingBox" x2="0" y2="1">
+                <stop stop-color="white" offset="0" />
+                <stop stop-color="white" stop-opacity="0" offset="1" />
+            </linearGradient>
+            <rect x="0" y="0" width="1" height="1" fill="url(#g)" />
+        </mask>
+    </svg>
+
+    </p>
+
+    <style>
+    </style>
+</body>
+
+</html>
