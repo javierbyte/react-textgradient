@@ -19677,15 +19677,15 @@ var TextGradient = React.createClass({displayName: "TextGradient",
 
         if(isWebkit) {
             style = {
-                display: 'block',
+                display: 'inline-block',
                 color: fallbackColor || fromColor,
-                background: '-webkit-linear-gradient(right, ' + fromColor + ',' + toColor + ')',
+                background: '-webkit-linear-gradient(' + direction + ', ' + toColor + ',' + fromColor + ')',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
             }
         } else {
             style  = {
-                display: 'block',
+                display: 'inline-block',
                 color: fallbackColor || fromColor,
                 mask: 'url(#svgGrad)'
             }
@@ -19724,23 +19724,50 @@ var App = React.createClass({displayName: "App",
     render:function() {
         return (
             React.createElement("div", null, 
-                React.createElement("h1", null, 
-                    React.createElement(TextGradient, {
-                        text: "react-textgradient", 
-                        fromColor: "#FF8008", 
-                        toColor: "#FFFF00", 
-                        direction: "right"}
-                        )
-                ), 
+                React.createElement("div", {className: "demo-block"}, React.createElement("div", {className: "demo-block-container"}, 
+                    React.createElement("h1", null, 
+                        React.createElement(TextGradient, {
+                            text: "React Text Gradient", 
+                            fromColor: "#FF8008", 
+                            toColor: "#FFFF00", 
+                            direction: "right"}
+                            )
+                    ), 
 
-                React.createElement("div", {className: "big"}, 
                     React.createElement(TextGradient, {
-                        text: "Text gradient react component. CSS with SVG fallback.", 
+                        className: "big-text", 
+                        text: "React component for creating text gradients. CSS with SVG fallback.", 
                         fromColor: "#eef2f3", 
                         toColor: "#8e9eab", 
                         direction: "right"}
                         )
-                )
+                )), 
+
+                React.createElement("div", {className: "demo-block demo-block-explain"}, React.createElement("div", {className: "demo-block-container"}, 
+                    React.createElement("h2", null, 
+                        React.createElement(TextGradient, {
+                            text: "How it works", 
+                            fromColor: "#222", 
+                            toColor: "#555", 
+                            direction: "right"}
+                            )
+                    ), 
+
+
+                    React.createElement("div", {className: "big-text"}, 
+                        'The component detects if WebkitBackgroundClip is available, and just apply the gradient over the text. If it is not, then the component creates a <svg> gradient with opacity, and applies it to the html with a mask.'
+                    )
+                )), 
+
+                React.createElement("div", {className: "demo-block demo-block-gold"}, React.createElement("div", {className: "demo-block-container"}, 
+                    React.createElement(TextGradient, {
+                        className: "gradient-text", 
+                        text: "Opacity Gradient", 
+                        fromColor: "#fff", 
+                        toColor: "rgba(255,255,255,.33)", 
+                        direction: "bottom"}
+                        )
+                ))
             )
         );
     }

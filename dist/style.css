@@ -1,28 +1,71 @@
+html {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-rendering: optimizelegibility;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 * {
   margin: 0;
   padding: 0;
   position: relative;
 }
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #202020;
   background: #333;
-  font-weight: 300;
+  font-weight: 400;
+  color: #444;
 }
 #demo {
   text-align: center;
-  position: absolute;
-  padding-top: 10em;
   width: 100%;
 }
-#demo h1 {
+#demo h1,
+#demo h2 {
   text-transform: uppercase;
   font-size: 4em;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -1px;
+  line-height: 1;
+  padding-bottom: .618em;
 }
-#demo .big {
-  font-size: 2em;
+#demo h2 {
+  font-size: 3em;
+}
+#demo .big-text {
+  font-size: 1.5em;
+  line-height: 1.618;
+}
+#demo .demo-block {
+  padding: 5em 2em;
+}
+#demo .demo-block-container {
+  max-width: 690px;
+  margin: 0 auto;
+}
+#demo .demo-block-explain {
+  background: #eee;
+}
+#demo .demo-block-gold {
+  background: url(https://ununsplash.imgix.net/photo-1425786680982-d62d9f35a08a?fit=crop&fm=jpg&h=725&q=75&w=1050) no-repeat center;
+  background-size: cover;
+  padding: 5em 0 20em;
+  height: 100vh;
+}
+#demo .demo-block-gold .gradient-text {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 4em;
+  line-height: 1;
+  padding: 0;
 }
 .forkme {
   display: block;
