@@ -1,6 +1,6 @@
 {
   "name": "react-textgradient",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Text gradient react component. CSS with SVG fallback.",
   "main": "textgradient.jsx",
   "scripts": {
