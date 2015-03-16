@@ -63,8 +63,10 @@ body {
   border-radius: 3px;
   padding: .618em 1em;
   line-height: 1;
+  background-color: #2196F3;
   background: -webkit-linear-gradient(bottom, #2196f3, #03a9f4);
   background: linear-gradient(bottom, #2196f3, #03a9f4);
+  background: -moz-linear-gradient(bottom, #2196f3, #03a9f4);
   box-shadow: inset rgba(0, 0, 0, 0.03) 0 -0.1em 0;
   display: inline-block;
   text-transform: uppercase;
