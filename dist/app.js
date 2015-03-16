@@ -19771,11 +19771,23 @@ var App = React.createClass({displayName: "App",
                 React.createElement("div", {className: "demo-block demo-block-gold"}, React.createElement("div", {className: "demo-block-container"}, 
                     React.createElement(TextGradient, {
                         className: "gradient-text", 
-                        text: "Also supports opacity gradients.", 
+                        text: "Also supports opacity gradients!", 
                         fromColor: "#fff", 
                         toColor: "rgba(255,255,255,.1)", 
                         direction: "bottom"}
                         )
+                )), 
+
+                React.createElement("div", {className: "demo-block demo-block-explain"}, React.createElement("div", {className: "demo-block-container"}, 
+                    React.createElement("a", {href: "http://github.com/javierbyte/react-textgradient"}, React.createElement("h2", null, 
+                        React.createElement(TextGradient, {
+                            className: "cta", 
+                            text: "More on Github", 
+                            fromColor: "#3F51B5", 
+                            toColor: "#2196F3", 
+                            direction: "right"}
+                            )
+                    ))
                 ))
 
             )

@@ -119,11 +119,23 @@ var App = React.createClass({
                 <div className='demo-block demo-block-gold'><div className='demo-block-container'>
                     <TextGradient
                         className='gradient-text'
-                        text='Also supports opacity gradients.'
+                        text='Also supports opacity gradients!'
                         fromColor='#fff'
                         toColor='rgba(255,255,255,.1)'
                         direction='bottom'
                         />
+                </div></div>
+
+                <div className='demo-block demo-block-explain'><div className='demo-block-container'>
+                    <a href='http://github.com/javierbyte/react-textgradient'><h2>
+                        <TextGradient
+                            className='cta'
+                            text='More on Github'
+                            fromColor='#3F51B5'
+                            toColor='#2196F3'
+                            direction='right'
+                            />
+                    </h2></a>
                 </div></div>
 
             </div>

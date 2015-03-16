@@ -55,8 +55,14 @@ body {
 #demo .demo-block-explain {
   background: #eee;
 }
+#demo .demo-block-explain .cta {
+  opacity: .8;
+}
+#demo .demo-block-explain .cta:hover {
+  opacity: 1;
+}
 #demo .demo-block-gold {
-  background: url(https://unsplash.imgix.net/photo-1422513391413-ddd4f2ce3340?fit=crop&fm=jpg&h=700&q=75&w=1050) no-repeat center;
+  background: url(../assets/demo-bg.jpg) no-repeat center;
   background-size: cover;
 }
 #demo .demo-block-gold .gradient-text {
