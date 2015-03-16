@@ -2,4 +2,4 @@
 
 * NOT WORKING *
 
-A react component for create blurred backgrounds.
+A React component that creates text gradients with CSS and SVG fallback.

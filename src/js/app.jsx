@@ -6,7 +6,8 @@ var TextGradient = React.createClass({
         text: React.PropTypes.string,
         fromColor: React.PropTypes.string,
         toColor: React.PropTypes.string,
-        fallbackColor: React.PropTypes.string
+        fallbackColor: React.PropTypes.string,
+        direction: React.PropTypes.oneOf('top', 'left', 'bottom', 'right')
     },
 
     getDefaultProps() {
@@ -26,7 +27,7 @@ var TextGradient = React.createClass({
         if(isWebkit) {
             style = {
                 display: 'inline-block',
-                color: fallbackColor || fromColor,
+                color: fallbackColor || toColor,
                 background: '-webkit-linear-gradient(' + direction + ', ' + toColor + ',' + fromColor + ')',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
@@ -35,17 +36,20 @@ var TextGradient = React.createClass({
             style  = {
                 position: 'relative',
                 display: 'inline-block',
-                color: toColor
+                color: fallbackColor || toColor,
+                width: '100%'
             }
 
             overStyle = {
-                display: 'inline-block',
+                display: 'block',
                 mask: 'url(#svgGrad)',
                 color: fromColor,
                 position: 'absolute',
-                padding: 'inherit',
+                width: '100%',
                 left: 0,
-                zIndex: 1
+                right: 0,
+                zIndex: 1,
+                textAlign: 'inherit'
             }
         }
 
@@ -60,20 +64,14 @@ var TextGradient = React.createClass({
                 "</mask>" +
             "</svg>";
 
-        return (
-            <span {...other} style={style}>
-                {(function() {
-                    if(isWebkit) return text;
+                    if(isWebkit) return (<span {...other} style={style}>{text}</span>);
                     else return (
-                        <span>
+                        <span {...other} style={style}>
                             <span style={overStyle}>{text}</span>
                             {text}
                             <div dangerouslySetInnerHTML={{ __html: SvgGrad }} />
                         </span>
                     );
-                })()}
-            </span>
-        );
     }
 
 });
@@ -95,7 +93,7 @@ var App = React.createClass({
 
                     <TextGradient
                         className='big-text'
-                        text='React component for creating text gradients. CSS with SVG fallback.'
+                        text='A React component that creates text gradients with CSS, including a SVG fallback.'
                         fromColor='#eef2f3'
                         toColor='#8e9eab'
                         direction='right'
@@ -114,19 +112,20 @@ var App = React.createClass({
 
 
                     <div className='big-text'>
-                        {'The component detects if WebkitBackgroundClip is available, and just apply the gradient over the text. If it is not, then the component creates a <svg> gradient with opacity, and applies it to the html with a mask.'}
+                        {'The component detects if WebkitBackgroundClip is available and apply the gradient over the text, otherwise the component creates a <svg> gradient with opacity, and applies it to the html with a mask.'}
                     </div>
                 </div></div>
 
                 <div className='demo-block demo-block-gold'><div className='demo-block-container'>
                     <TextGradient
                         className='gradient-text'
-                        text='Opacity Gradient'
+                        text='Also supports opacity gradients.'
                         fromColor='#fff'
                         toColor='rgba(255,255,255,.1)'
                         direction='bottom'
                         />
                 </div></div>
+
             </div>
         );
     }
