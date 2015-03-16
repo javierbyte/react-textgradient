@@ -59,19 +59,15 @@ var TextGradient = React.createClass({
                     (function(){
                         switch(direction) {
                             case 'right':
-                                console.log('right');
                                 return "<linearGradient id='g' gradientUnits='objectBoundingBox' x1='0' x2='1'>";
                                 break;
                             case 'left':
-                                console.log('left');
                                 return "<linearGradient id='g' gradientUnits='objectBoundingBox' x1='1' x2='0'>";
                                 break;
                             case 'bottom':
-                                console.log('bottom');
                                 return "<linearGradient id='g' gradientUnits='objectBoundingBox' y1='0' y2='1'>";
                                 break;
                             case 'top':
-                                console.log('top');
                                 return "<linearGradient id='g' gradientUnits='objectBoundingBox' y1='1' y2='0'>";
                                 break;
                         }
@@ -83,16 +79,19 @@ var TextGradient = React.createClass({
                 "</mask>" +
             "</svg>";
 
-            console.log(SvgGrad);
-
-                    if(isWebkit) return (<span {...other} style={style}>{text}</span>);
-                    else return (
-                        <span {...other} style={style}>
-                            <div dangerouslySetInnerHTML={{ __html: SvgGrad }} />
-                            <span style={overStyle}>{text}</span>
-                            {text}
-                        </span>
-                    );
+        if(isWebkit) {
+            return (
+                <span {...other} style={style}>
+                    {text}
+                </span>
+            )
+        } else return (
+            <span {...other} style={style}>
+                <div dangerouslySetInnerHTML={{ __html: SvgGrad }} />
+                <span style={overStyle}>{text}</span>
+                {text}
+            </span>
+        );
     }
 
 });
