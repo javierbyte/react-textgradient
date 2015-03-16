@@ -126,16 +126,15 @@ var App = React.createClass({
                         />
                 </div></div>
 
-                <div className='demo-block demo-block-explain'><div className='demo-block-container'>
-                    <a href='http://github.com/javierbyte/react-textgradient'><h2>
+                <div className='demo-block demo-block-github'><div className='demo-block-container'>
+                    <a href='http://github.com/javierbyte/react-textgradient' className='cta'>
                         <TextGradient
-                            className='cta'
                             text='More on Github'
-                            fromColor='#3F51B5'
-                            toColor='#2196F3'
-                            direction='right'
+                            fromColor='#fff'
+                            toColor='rgba(255,255,255,.8)'
+                            direction='bottom'
                             />
-                    </h2></a>
+                    </a>
                 </div></div>
 
             </div>

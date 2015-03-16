@@ -46,7 +46,7 @@ body {
   line-height: 1.618;
 }
 #demo .demo-block {
-  padding: 5em 2em;
+  padding: 7em 2em;
 }
 #demo .demo-block-container {
   max-width: 690px;
@@ -55,10 +55,24 @@ body {
 #demo .demo-block-explain {
   background: #eee;
 }
-#demo .demo-block-explain .cta {
-  opacity: .8;
+#demo .demo-block-github {
+  padding: 9em 2em;
+  background: #fff;
 }
-#demo .demo-block-explain .cta:hover {
+#demo .demo-block-github .cta {
+  border-radius: 3px;
+  padding: .618em 1em;
+  line-height: 1;
+  background: -webkit-linear-gradient(bottom, #2196f3, #03a9f4);
+  background: linear-gradient(bottom, #2196f3, #03a9f4);
+  box-shadow: inset rgba(0, 0, 0, 0.03) 0 -0.1em 0;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 3em;
+  font-weight: 800;
+  opacity: .9;
+}
+#demo .demo-block-github .cta:hover {
   opacity: 1;
 }
 #demo .demo-block-gold {
