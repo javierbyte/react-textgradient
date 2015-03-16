@@ -1,10 +1,16 @@
-# React Textgradient
+# [React Text Gradient](http://javierbyte.github.io/react-textgradient/)
 
 A React component that creates text gradients with CSS, including a SVG fallback.
 
 [Live demo](http://javierbyte.github.io/react-textgradient/)
 
 [![react-textgradient](screenshot.png)](http://javierbyte.github.io/react-textgradient/)
+
+# Features
+* Uses CSS gradients whenever it can (Chrome, Safari, iOS, android).
+* Uses SVG as fallback on Firefox.
+* The text remains as fluid text (never replaced with svg).
+* Font size, family, weight, etc... setted by CSS as normal.
 
 # Installation
 
