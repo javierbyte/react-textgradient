@@ -20,7 +20,7 @@ var TextGradient = React.createClass({
     render() {
         var {text, component, fromColor, toColor, fallbackColor, direction, ...other} = this.props;
 
-        var style;
+        var style, overStyle;
         var isWebkit = 'WebkitTextFillColor' in document.documentElement.style;
 
         if(isWebkit) {
@@ -33,9 +33,19 @@ var TextGradient = React.createClass({
             }
         } else {
             style  = {
+                position: 'relative',
                 display: 'inline-block',
-                color: fallbackColor || fromColor,
-                mask: 'url(#svgGrad)'
+                color: toColor
+            }
+
+            overStyle = {
+                display: 'inline-block',
+                mask: 'url(#svgGrad)',
+                color: fromColor,
+                position: 'absolute',
+                padding: 'inherit',
+                left: 0,
+                zIndex: 1
             }
         }
 
@@ -56,6 +66,7 @@ var TextGradient = React.createClass({
                     if(isWebkit) return text;
                     else return (
                         <span>
+                            <span style={overStyle}>{text}</span>
                             {text}
                             <div dangerouslySetInnerHTML={{ __html: SvgGrad }} />
                         </span>
@@ -76,8 +87,8 @@ var App = React.createClass({
                     <h1>
                         <TextGradient
                             text='React Text Gradient'
-                            fromColor='#FF8008'
-                            toColor='#FFFF00'
+                            fromColor='#FFFF00'
+                            toColor='#FF8008'
                             direction='right'
                             />
                     </h1>
@@ -112,7 +123,7 @@ var App = React.createClass({
                         className='gradient-text'
                         text='Opacity Gradient'
                         fromColor='#fff'
-                        toColor='rgba(255,255,255,.33)'
+                        toColor='rgba(255,255,255,.1)'
                         direction='bottom'
                         />
                 </div></div>
