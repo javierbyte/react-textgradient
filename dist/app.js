@@ -18333,6 +18333,10 @@ var React = require('react'),
 
 var App = React.createClass({displayName: "App",
 
+    componentDidMount:function() {
+        (function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}})(document, 'script', 'twitter-wjs');
+    },
+
     render:function() {
         return (
             React.createElement("div", null, 
@@ -18352,7 +18356,12 @@ var App = React.createClass({displayName: "App",
                         fromColor: "#eef2f3", 
                         toColor: "#8e9eab", 
                         direction: "left"}
-                        )
+                        ), 
+
+                        React.createElement("br", null), React.createElement("br", null), 
+                        React.createElement("a", {href: "https://twitter.com/share", className: "twitter-share-button", "data-url": "http://javierbyte.github.io/react-textgradient/", "data-via": "javierbyte", "data-size": "large"}, "Tweet"), 
+
+                        React.createElement("iframe", {src: "https://ghbtns.com/github-btn.html?user=javierbyte&repo=react-textgradient&type=star&count=true&size=large", frameBorder: "0", scrolling: "0", width: "160px", height: "30px"})
                 )), 
 
                 React.createElement("div", {className: "demo-block demo-block-explain"}, React.createElement("div", {className: "demo-block-container"}, 

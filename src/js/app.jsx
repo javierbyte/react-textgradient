@@ -3,6 +3,10 @@ var React = require('react'),
 
 var App = React.createClass({
 
+    componentDidMount() {
+        (function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}})(document, 'script', 'twitter-wjs');
+    },
+
     render() {
         return (
             <div>
@@ -23,6 +27,11 @@ var App = React.createClass({
                         toColor='#8e9eab'
                         direction='left'
                         />
+
+                        <br/><br/>
+                        <a href="https://twitter.com/share" className="twitter-share-button" data-url="http://javierbyte.github.io/react-textgradient/" data-via="javierbyte" data-size="large">Tweet</a>
+
+                        <iframe src="https://ghbtns.com/github-btn.html?user=javierbyte&repo=react-textgradient&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
                 </div></div>
 
                 <div className='demo-block demo-block-explain'><div className='demo-block-container'>
