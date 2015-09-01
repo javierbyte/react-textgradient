@@ -34,6 +34,7 @@ And then use it like this:
   fromColor='#FFFF00'
   toColor='#FF8008'
   direction='right' />
+```
 
  And you will get the example of the start of the page.
 
