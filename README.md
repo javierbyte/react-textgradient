@@ -1,5 +1,13 @@
 # [React Text Gradient.](http://javierbyte.github.io/react-textgradient/)
 
+## UNMAINTAINED
+
+Unmantained for now.
+
+It seems that there are modern ways to do this, see https://css-tricks.com/snippets/css/gradient-text/
+
+---
+
 A React component that creates text gradients with CSS, including a SVG fallback.
 
 [Live demo.](http://javierbyte.github.io/react-textgradient/)
